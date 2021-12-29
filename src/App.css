@@ -1,3 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.app {
+  min-height: 100vh;
+}
+
+.app {
+  padding: 1rem;
+}
+
+.app.dark {
+  background: #131319;
+  color: #f6f6f6;
+}
+
 .container {
   margin: 1rem auto;
   max-width: 1400px;
