@@ -86,6 +86,7 @@ body,
 }
 
 .cast-member-main {
+  align-items: start;
   display: flex;
   gap: 1rem;
 }
@@ -109,6 +110,7 @@ body,
 }
 
 .show-main-info {
+  align-items: start;
   display: flex;
   gap: 1rem;
 }
