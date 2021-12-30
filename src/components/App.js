@@ -4,8 +4,9 @@ import HomePage from './home/HomePage';
 import { Route, Routes } from 'react-router-dom';
 import ErrorPage from './ErrorPage';
 import React, { useState, useEffect } from 'react';
-import ShowInfo from './shows/ShowInfo';
+import ShowContainer from './shows/ShowContainer';
 import { createTheme, ThemeProvider } from '@mui/material';
+import CastMember from './cast-member/CastMember';
 
 function App() {
     const [currentShows, setCurrentShows] = useState([]);
@@ -32,7 +33,8 @@ function App() {
                 <Header />
                 <Routes>
                     <Route exact path="/" element={ <HomePage currentShows={currentShows} showClick={handleShowClick}/> }></Route>
-                    <Route path="shows/:id" element={ <ShowInfo showInfo={showInfo} /> }></Route>
+                    <Route path="shows/:id" element={ <ShowContainer showInfo={showInfo} /> }></Route>
+                    <Route path="cast-member/:id" element={ <CastMember /> }></Route>
                     <Route path="*" element={ <ErrorPage /> }></Route>
                 </Routes>
             </ThemeProvider>
