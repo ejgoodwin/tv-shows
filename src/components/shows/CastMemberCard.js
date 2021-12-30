@@ -3,7 +3,7 @@
 */
 
 import personTemplate from '../../images/person-template.jpg';
-import { Card, CardActionArea, CardContent, CardMedia } from '@mui/material';
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const CastMember = ({ details }) => {
@@ -18,8 +18,8 @@ const CastMember = ({ details }) => {
                         height="295"
                         image={ details.person.image && details.person.image.medium ? details.person.image.medium : personTemplate }></CardMedia>
                     <CardContent>
-                        <h3>{ details.person.name }</h3>
-                        { !details.self && <p> as {details.character.name}</p>}
+                        <Typography variant="h6" >{ details.person.name }</Typography>
+                        <Typography variant="subtitle" >{ details.character.name }</Typography>
                     </CardContent>
                 </CardActionArea>
             </Card>

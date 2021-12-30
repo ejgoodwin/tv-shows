@@ -1,14 +1,15 @@
 import personTemplate from '../../images/person-template.jpg';
+import { Typography } from '@mui/material';
 
 const CastMemberMain = ({ memberDetails }) => {
     return (
         <div className="cast-member-main">
             <img src={ memberDetails.image && memberDetails.image.medium ? memberDetails.image.medium : personTemplate } />
             <div className="cast-member-main__text">
-                <h1>{ memberDetails.name }</h1>
-                {memberDetails.country && <p>Country: {memberDetails.country.name}</p>}
-                {memberDetails.birthday && <p>Born: {memberDetails.birthday}</p>}
-                {memberDetails.deathday && <p>Died: {memberDetails.deathday}</p>}
+                <Typography variant="h2" component="h1">{ memberDetails.name }</Typography>
+                {memberDetails.country && <Typography variant="subtitle" component="div" gutterBottom>{ `Country: ${memberDetails.country.name}` }</Typography>}
+                {memberDetails.birthday && <Typography variant="subtitle" component="div" gutterBottom>{ `Born: ${memberDetails.birthday}` }</Typography>}
+                {memberDetails.deathday && <Typography variant="subtitle" component="div" gutterBottom>{ `Died: ${memberDetails.deathday}` }</Typography>}
             </div>
         </div>
     );

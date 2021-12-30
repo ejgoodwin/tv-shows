@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import CastMemberMain from "./CastMemberMain";
 import CastMemberCreditCard from "./CastMemberCreditCard";
+import { Typography } from '@mui/material';
+
 
 const CastMember = () => {
     const [memberDetails, setMemberDetails] = useState('');
@@ -30,9 +32,9 @@ const CastMember = () => {
     return (
         <div className="container">
             <CastMemberMain memberDetails={memberDetails} />
-            <h2>Know for</h2>
+            <Typography variant="h3" component="h2"sx={{ marginTop:5, marginBottom:2 }} >TV Shows</Typography>
             <div className="cast-member-credits">
-                {[...memberCrewCredits].map(item => <CastMemberCreditCard credit={item._embedded.show} />)}
+                {[...memberCrewCredits].map(item => <CastMemberCreditCard key={item._embedded.show.id} credit={item._embedded.show} />)}
             </div>
         </div>
     );
