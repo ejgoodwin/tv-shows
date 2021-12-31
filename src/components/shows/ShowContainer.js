@@ -28,8 +28,7 @@ const ShowContainer = () => {
     return (
         <div className="container">
             <ShowMain showInfo={showInfo} />
-            {console.log(showInfo)}
-            {showInfo._embedded.cast.length > 0 && <h2>Cast</h2>}
+            {showInfo._embedded.cast.length > 0 && <Typography variant="h4" component="h2" gutterBottom>Cast</Typography>}
             <div className="card-container">
                 {showInfo._embedded.cast.map(detail => (
                     <Link to={`../cast-member/${detail.person.id}`}>

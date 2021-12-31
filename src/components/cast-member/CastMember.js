@@ -31,7 +31,7 @@ const CastMember = () => {
     return (
         <div className="container">
             <CastMemberMain memberDetails={memberDetails} />
-            <Typography variant="h3" component="h2"sx={{ marginTop:5, marginBottom:2 }} >TV Shows</Typography>
+            <Typography variant="h4" component="h2"sx={{ marginTop:5, marginBottom:2 }} >TV Shows</Typography>
             <div className="card-container">
                 {[...memberCrewCredits].map(person => (
                     <Link to={`../shows/${person._embedded.show.id}`}>
