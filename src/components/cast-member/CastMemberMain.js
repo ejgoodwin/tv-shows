@@ -3,9 +3,9 @@ import { Typography } from '@mui/material';
 
 const CastMemberMain = ({ memberDetails }) => {
     return (
-        <div className="cast-member-main">
+        <div className="main-info">
             <img src={ memberDetails.image && memberDetails.image.medium ? memberDetails.image.medium : personTemplate } />
-            <div className="cast-member-main__text">
+            <div className="main-info__text">
                 <Typography variant="h2" component="h1">{ memberDetails.name }</Typography>
                 {memberDetails.country && <Typography variant="subtitle" component="div" gutterBottom>{ `Country: ${memberDetails.country.name}` }</Typography>}
                 {memberDetails.birthday && <Typography variant="subtitle" component="div" gutterBottom>{ `Born: ${memberDetails.birthday}` }</Typography>}

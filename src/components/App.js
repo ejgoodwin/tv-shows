@@ -11,28 +11,34 @@ import CastMember from './cast-member/CastMember';
 function App() {
     const [currentShows, setCurrentShows] = useState([]);
     const [showInfo, setShowInfo] = useState('');
+    const [themeDark, setThemeDark] = useState(true);
+    const [country, setcountry] = useState('GB');
+
+    const updateCountry = (e) => {
+        setcountry(e.target.value);
+    }
 
     const darkTheme = createTheme({
         palette: {
-            mode: 'dark',
+            mode: themeDark ? 'dark' : 'light',
         },
     });
 
     useEffect(() => {
         // Get current shows for about page.
-        fetch('https://api.tvmaze.com/schedule?country=GB')
+        fetch(`https://api.tvmaze.com/schedule/?country=${country}`)
         .then(res => res.json())
-        .then(data => setCurrentShows(data));
-    }, []);
+        .then(data => setCurrentShows(data.filter(tvShow => tvShow.show.image)));
+    }, [country]);
 
-    const handleShowClick = (id) => setShowInfo(currentShows.filter(show => show.id === id)[0]);
+    const toggleTheme = () => setThemeDark(!themeDark);
 
     return (
         <div className={`app ${darkTheme.palette.mode}`}>
             <ThemeProvider theme={darkTheme}>
-                <Header />
+                <Header toggleTheme={toggleTheme} />
                 <Routes>
-                    <Route exact path="/" element={ <HomePage currentShows={currentShows} showClick={handleShowClick}/> }></Route>
+                    <Route exact path="/" element={ <HomePage country={country} currentShows={currentShows} themeDark={themeDark} updateCountry={updateCountry} /> }></Route>
                     <Route path="shows/:id" element={ <ShowContainer showInfo={showInfo} /> }></Route>
                     <Route path="cast-member/:id" element={ <CastMember /> }></Route>
                     <Route path="*" element={ <ErrorPage /> }></Route>
