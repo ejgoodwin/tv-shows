@@ -22,12 +22,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-const SearchContainer = styled('div')(({ theme, themeDark }) => ({
+const SearchContainer = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: themeDark ? alpha(theme.palette.common.white, 0.05) : alpha(theme.palette.common.white, 0.7),
+    backgroundColor: 'var(--search-background)',
     '&:hover': {
-        backgroundColor: themeDark ? alpha(theme.palette.common.white, 0.07) : alpha(theme.palette.common.white, 0.9),
+        backgroundColor: 'var(--search-background-hover)',
     },
     margin: 'auto',
     width: '50%',
@@ -43,7 +43,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     opacity: '.5',
 }));
 
-const Search = ({ themeDark }) => {
+const Search = () => {
     const [searchItems, setsearchItems] = useState([]);
     const [searchValue, setsearchValue] = useState('');
     const [dropdownOpen, setdropdownOpen] = useState(false);
@@ -52,15 +52,13 @@ const Search = ({ themeDark }) => {
     const closeSearchDropdown = (e) => {
         const dropdownOpen = searchinputRef.current && searchinputRef.current.contains(e.target) ? true : false;
         setdropdownOpen(dropdownOpen);
+        setsearchValue('');
     }
 
     useEffect(() => {
         fetch(`https://api.tvmaze.com/search/shows?q=${searchValue}`)
         .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            setsearchItems(data);
-        });
+        .then(data => setsearchItems(data));
     }, [searchValue]);
 
     useEffect(() => {
@@ -71,7 +69,7 @@ const Search = ({ themeDark }) => {
     }, []);
 
     return (
-        <SearchContainer themeDark={themeDark}>
+        <SearchContainer>
             <SearchIconWrapper>
                 <SearchIcon />
             </SearchIconWrapper>
@@ -83,7 +81,6 @@ const Search = ({ themeDark }) => {
                 value={searchValue}
             />
             <List sx={{ display: dropdownOpen ? 'block' : 'none', position:'absolute', width:'100%', zIndex:'2' }}>
-                {console.log('searchItems',searchItems)}
                 {searchItems.map(item => (
                     <ListItem key={item.show.id} disablePadding className='search-list-item'>
                         <Link to={`../shows/${item.show.id}`} className='search-dropdown-link'>

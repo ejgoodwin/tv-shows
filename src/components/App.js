@@ -6,11 +6,10 @@ import ErrorPage from './ErrorPage';
 import React, { useState, useEffect } from 'react';
 import ShowContainer from './shows/ShowContainer';
 import { createTheme, ThemeProvider } from '@mui/material';
-import CastMember from './cast-member/CastMember';
+import CastMemberContainer from './cast-member/CastMemberContainer';
 
 function App() {
     const [currentShows, setCurrentShows] = useState([]);
-    const [showInfo, setShowInfo] = useState('');
     const [themeDark, setThemeDark] = useState(true);
     const [country, setcountry] = useState('GB');
 
@@ -39,8 +38,8 @@ function App() {
                 <Header toggleTheme={toggleTheme} />
                 <Routes>
                     <Route exact path="/" element={ <HomePage country={country} currentShows={currentShows} themeDark={themeDark} updateCountry={updateCountry} /> }></Route>
-                    <Route path="shows/:id" element={ <ShowContainer showInfo={showInfo} /> }></Route>
-                    <Route path="cast-member/:id" element={ <CastMember /> }></Route>
+                    <Route path="shows/:id" element={ <ShowContainer /> }></Route>
+                    <Route path="cast-member/:id" element={ <CastMemberContainer /> }></Route>
                     <Route path="*" element={ <ErrorPage /> }></Route>
                 </Routes>
             </ThemeProvider>

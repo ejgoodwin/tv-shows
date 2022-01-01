@@ -2,29 +2,34 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import HomeIcon from '@mui/icons-material/Home';
 import React from 'react';
 import logo from '../../images/logo.svg';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { Link as MaterialLink } from '@mui/material';
 import { IconButton } from '@mui/material';
+import Search from './Search';
 
 const Header = ({ toggleTheme }) => {
     return (
-        <div className="header">
+        <header className="header">
             <div className="container header__container">
                 <MaterialLink component={RouterLink} to="/">
                     <img src={logo} alt="" />
                 </MaterialLink>
-                <span className='header__home-link'>
+
+                {useLocation().pathname !== '/' && <Search />}
+
+                <div>
                     <MaterialLink component={RouterLink} to="/">
-                        <IconButton variant="text" color="secondary">
-                            <HomeIcon />
+                        <IconButton variant="text">
+                            <HomeIcon style={{ color: 'var(--icon-header-color)' }} />
                         </IconButton>
                     </MaterialLink>
-                </span>
-                <IconButton onClick={() => toggleTheme()} variant="text" color="secondary">
-                    <Brightness4Icon />
-                </IconButton>
+                    
+                    <IconButton onClick={() => toggleTheme()} variant="text">
+                        <Brightness4Icon style={{ color: 'var(--icon-header-color)' }} />
+                    </IconButton>
+                </div>
             </div>
-        </div>
+        </header>
     ); 
 }
 

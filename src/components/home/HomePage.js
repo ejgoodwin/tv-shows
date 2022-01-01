@@ -2,17 +2,16 @@ import React from 'react';
 import Search from '../common/Search';
 import { Card, CardActionArea, CardContent, CardMedia, FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 
 const HomePage = ({ country, currentShows, themeDark, updateCountry }) => {
 
     return (
         <React.Fragment>
-        <div className="hero">
+        <section className="hero">
             <Typography variant="h2" component="h1" sx={{ marginTop: 0, marginBottom: 5, textAlign: 'center' }}>Search for a TV show</Typography>
-            <Search themeDark={themeDark} />
-        </div>
-        <div className="container">
+            <Search />
+        </section>
+        <section className="container">
             <div className="country-selector-container">
                 <Typography variant="h5" component="h2" sx={{ marginTop: 3, marginBottom: 3, marginRight: 2 }}>Showing today in</Typography>
                 <FormControl>
@@ -35,7 +34,7 @@ const HomePage = ({ country, currentShows, themeDark, updateCountry }) => {
             </div>
             {currentShows.length > 0 ? <div className="card-container">
                 {currentShows.map(tvShow => (
-                    <Link to={`shows/${tvShow.show.id}`}>
+                    <Link to={`shows/${tvShow.show.id}`} key={tvShow.id}>
                     <Card sx={{ margin:'auto', maxWidth:210 }} className="card">
                         <CardActionArea >
                             <CardMedia
@@ -53,7 +52,7 @@ const HomePage = ({ country, currentShows, themeDark, updateCountry }) => {
                     </Card>
                 </Link>))}
             </div> : `Sorry, we don't have any tv shows listed today.`}
-        </div>
+        </section>
         </React.Fragment>
     );
 }
