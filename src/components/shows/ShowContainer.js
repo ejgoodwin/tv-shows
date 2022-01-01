@@ -16,10 +16,14 @@ const ShowContainer = () => {
     
     useEffect(() => {
         // Get data for the show that has ID matching the URL param.
-        fetch(`https://api.tvmaze.com/shows/${params.id}?embed[]=cast&embed[]=images&embed[]=episodes`)
+        // Use AbortController to abort the fetch and cleanup in return function to avoid memory leaks.
+        const controller = new AbortController();
+        fetch(`https://api.tvmaze.com/shows/${params.id}?embed[]=cast&embed[]=images&embed[]=episodes`, {signal: controller.signal})
         .then(res => res.json())
-        .then(data => setShowInfo(data));
-        return () => {}
+        .then(data => setShowInfo(data))
+        .catch(e => console.log('<ShowContainer>',e));
+
+        return () => controller.abort();
     }, [showInfo]);
 
     if (!showInfo) return '';

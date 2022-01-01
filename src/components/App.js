@@ -25,9 +25,14 @@ function App() {
 
     useEffect(() => {
         // Get current shows for about page.
-        fetch(`https://api.tvmaze.com/schedule/?country=${country}`)
+        // Use AbortController to abort the fetch and cleanup in return function to avoid memory leaks.
+        const controller = new AbortController();
+        fetch(`https://api.tvmaze.com/schedule/?country=${country}`, {signal: controller.signal})
         .then(res => res.json())
-        .then(data => setCurrentShows(data.filter(tvShow => tvShow.show.image)));
+        .then(data => setCurrentShows(data.filter(tvShow => tvShow.show.image)))
+        .catch(e => console.log(e));
+        
+        return () => controller.abort();
     }, [country]);
 
     const toggleTheme = () => setThemeDark(!themeDark);

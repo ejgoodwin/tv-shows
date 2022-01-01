@@ -16,18 +16,20 @@ const CastMemberContainer = () => {
 
     useEffect(() => {
         // Get main data for the cast member.
-        fetch(`https://api.tvmaze.com/people/${params.id}`)
+        // Use AbortController to abort the fetch and cleanup in return function to avoid memory leaks.
+        const controller = new AbortController();
+        fetch(`https://api.tvmaze.com/people/${params.id}`, {signal: controller.signal})
         .then(res => res.json())
-        .then(data => {
-            // console.log(data)
-            setMemberDetails(data);
-        });
+        .then(data =>  setMemberDetails(data))
+        .catch(e => console.log(e));
 
         // Get cast credit data for the cast member.
-        fetch(`https://api.tvmaze.com/people/${params.id}/castcredits?embed=show`)
+        fetch(`https://api.tvmaze.com/people/${params.id}/castcredits?embed=show`, {signal: controller.signal})
         .then(res => res.json())
-        .then(data => setMemberCrewCredits(data));
-        return () => {};
+        .then(data => setMemberCrewCredits(data))
+        .catch(e => console.log('<CastMemberContainer>',e));
+        
+        return () => controller.abort();
     }, []);
 
     return (

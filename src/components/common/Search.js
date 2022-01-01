@@ -30,7 +30,9 @@ const SearchContainer = styled('div')(({ theme }) => ({
         backgroundColor: 'var(--search-background-hover)',
     },
     margin: 'auto',
-    width: '50%',
+    [theme.breakpoints.up('sm')]: {
+        width: '50%',
+    },
 }));
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -56,9 +58,14 @@ const Search = () => {
     }
 
     useEffect(() => {
-        fetch(`https://api.tvmaze.com/search/shows?q=${searchValue}`)
+        // Use AbortController to abort the fetch and cleanup in return function to avoid memory leaks.
+        const controller = new AbortController();
+        fetch(`https://api.tvmaze.com/search/shows?q=${searchValue}`, {signal: controller.signal})
         .then(res => res.json())
-        .then(data => setsearchItems(data));
+        .then(data => setsearchItems(data))
+        .catch(e => console.log('<Search>',e));
+
+        return () => controller.abort();
     }, [searchValue]);
 
     useEffect(() => {

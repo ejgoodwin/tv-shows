@@ -25,7 +25,7 @@ body,
 }
 
 :root .dark {
-  --background-colour: black;
+  --background-colour: #09090a;
   --hero-background: #101122;
   --icon-header-color: #c997fb;
   --icon-rating-color: #fbec6b;
@@ -36,6 +36,9 @@ body,
   color: #f6f6f6;
 }
 
+.app {
+  padding-bottom: 1rem;
+}
 
 .card-content-main {
   background: rgb(0,0,0);
@@ -103,6 +106,7 @@ body,
 .header__container {
   align-items: center;
   display: flex;
+  gap: .5rem;
   justify-content: space-between;
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
@@ -111,6 +115,10 @@ body,
 .header__home-link {
   flex-grow: 1;
   text-align: end;
+}
+
+.header__icons {
+  display: flex;
 }
 
 .hero {
@@ -148,10 +156,9 @@ body,
 }
 
 .gallery {
-  align-items: center;
-  display: flex;
+  display: grid;
   gap: 8px;
-  flex-wrap: wrap;
+  grid-template: var(--gallery-grid-template, auto / repeat(2, 1fr));
   list-style: none;
   margin: 0;
   padding: 0 0 2rem;
@@ -176,7 +183,6 @@ body,
 
 .gallery__item {
   height: 200px;
-  width: 200px;
 }
 
 .gallery__img {
@@ -219,11 +225,11 @@ body,
 }
 
 .gallery__modal-prev {
-  left: 1rem;
+  left: 0;
 }
 
 .gallery__modal-next {
-  right: 1rem;
+  right: 0;
 }
 
 .gallery__modal-image {
@@ -255,6 +261,7 @@ body,
 @media screen and (min-width: 600px) {
   :root {
     --cards-grid-template: auto / repeat(3, 1fr);
+    --gallery-grid-template: auto / repeat(4, 1fr);
     --hero-inner-flex-direction: row;
   }
 }
@@ -262,6 +269,7 @@ body,
 @media screen and (min-width: 800px) {
   :root {
     --cards-grid-template: auto / repeat(4, 1fr);
+    --gallery-grid-template: auto / repeat(6, 1fr);
     --section-spacing-medium: var(--space-vertical-medium) auto;
     --space-vertical-medium: 5rem;
   }
