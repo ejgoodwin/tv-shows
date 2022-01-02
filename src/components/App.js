@@ -42,9 +42,9 @@ function App() {
             <ThemeProvider theme={darkTheme}>
                 <Header toggleTheme={toggleTheme} />
                 <Routes>
-                    <Route exact path="/" element={ <HomePage country={country} currentShows={currentShows} themeDark={themeDark} updateCountry={updateCountry} /> }></Route>
-                    <Route path="shows/:id" element={ <ShowContainer /> }></Route>
-                    <Route path="cast-member/:id" element={ <CastMemberContainer /> }></Route>
+                    <Route exact path="tv-shows" element={ <HomePage country={country} currentShows={currentShows} themeDark={themeDark} updateCountry={updateCountry} /> }></Route>
+                    <Route path="tv-shows/shows/:id" element={ <ShowContainer /> }></Route>
+                    <Route path="tv-shows/cast-member/:id" element={ <CastMemberContainer /> }></Route>
                     <Route path="*" element={ <ErrorPage /> }></Route>
                 </Routes>
             </ThemeProvider>

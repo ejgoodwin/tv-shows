@@ -90,7 +90,7 @@ const Search = () => {
             <List sx={{ display: dropdownOpen ? 'block' : 'none', position:'absolute', width:'100%', zIndex:'2' }}>
                 {searchItems.map(item => (
                     <ListItem key={item.show.id} disablePadding className='search-list-item'>
-                        <Link to={`../shows/${item.show.id}`} className='search-dropdown-link'>
+                        <Link to={`../tv-shows/shows/${item.show.id}`} className='search-dropdown-link'>
                             <ListItemButton>
                                 <ListItemText primary={item.show.name} />
                             </ListItemButton>

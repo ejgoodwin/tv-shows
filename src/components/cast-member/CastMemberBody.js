@@ -13,7 +13,7 @@ const CastMemberBody = ({ memberCrewCredits }) => {
             <Typography variant="h4" component="h2"sx={{ marginTop:5, marginBottom:2 }} >TV Shows</Typography>
             <div className="card-container">
                 {[...memberCrewCredits].map(person => (
-                    <Link to={`../shows/${person._embedded.show.id}`} key={person._embedded.show.id}>
+                    <Link to={`../tv-shows/shows/${person._embedded.show.id}`} key={person._embedded.show.id}>
                         <Card sx={{ margin:'auto', maxWidth:210 }} className="card">
                             <CardActionArea>
                                 <CardMedia

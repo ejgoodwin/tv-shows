@@ -11,14 +11,14 @@ const Header = ({ toggleTheme }) => {
     return (
         <header className="header">
             <div className="container header__container">
-                <MaterialLink component={RouterLink} to="/" sx={{ marginInlineEnd:'.5rem' }}>
+                <MaterialLink component={RouterLink} to="tv-shows" sx={{ marginInlineEnd:'.5rem' }}>
                     <img src={logo} alt="" />
                 </MaterialLink>
 
-                {useLocation().pathname !== '/' && <Search />}
+                {useLocation().pathname !== '/tv-shows' && <Search />}
 
                 <div className="header__icons">
-                    <MaterialLink component={RouterLink} to="/">
+                    <MaterialLink component={RouterLink} to="tv-shows">
                         <IconButton variant="text">
                             <HomeIcon style={{ color: 'var(--icon-header-color)' }} />
                         </IconButton>

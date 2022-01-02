@@ -29,7 +29,7 @@ const ShowBody = ({ showInfo }) => {
                     <Typography variant="h4" component="h2" gutterBottom>Cast</Typography>
                     <div className="card-container">
                         {showInfo._embedded.cast.map(detail => (
-                            <Link to={`../cast-member/${detail.person.id}`} key={detail.person.id}>
+                            <Link to={`../tv-shows/cast-member/${detail.person.id}`} key={detail.person.id}>
                                 <Card sx={{ margin:'auto', maxWidth:210 }} className="card">
                                     <CardActionArea>
                                         <CardMedia
