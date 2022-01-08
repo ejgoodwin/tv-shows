@@ -34,7 +34,7 @@ const HomePage = ({ country, currentShows, themeDark, updateCountry }) => {
             </div>
             {currentShows.length > 0 ? <div className="card-container">
                 {currentShows.map(tvShow => (
-                    <Link to={`tv-shows/shows/${tvShow.show.id}`} key={tvShow.id}>
+                    <Link to={`shows/${tvShow.show.id}`} key={tvShow.id}>
                     <Card sx={{ margin:'auto', maxWidth:210 }} className="card">
                         <CardActionArea >
                             <CardMedia

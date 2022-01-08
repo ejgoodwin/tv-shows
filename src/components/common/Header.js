@@ -8,6 +8,8 @@ import { IconButton } from '@mui/material';
 import Search from './Search';
 
 const Header = ({ toggleTheme }) => {
+    const pathName = useLocation().pathname;
+
     return (
         <header className="header">
             <div className="container header__container">
@@ -15,7 +17,7 @@ const Header = ({ toggleTheme }) => {
                     <img src={logo} alt="" />
                 </MaterialLink>
 
-                {useLocation().pathname !== '/tv-shows' && <Search />}
+                {pathName !== '/tv-shows' && pathName !== '/tv-shows/' ? <Search /> : ''}
 
                 <div className="header__icons">
                     <MaterialLink component={RouterLink} to="tv-shows">
