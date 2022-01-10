@@ -7,6 +7,3 @@ A React app that shows today's TV show listings for various countries, allows us
 
 ## Run
 `npm start`
-
-## Deploy to GitHub Pages
-Remove `gh-pages` from node modules and run `npm run deploy`.
