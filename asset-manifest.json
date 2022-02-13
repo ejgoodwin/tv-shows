@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/tv-shows/static/css/main.5c22173c.css",
-    "main.js": "/tv-shows/static/js/main.ae10c5d6.js",
+    "main.css": "/tv-shows/static/css/main.55860d1b.css",
+    "main.js": "/tv-shows/static/js/main.03570bd5.js",
     "static/js/787.7a7d084e.chunk.js": "/tv-shows/static/js/787.7a7d084e.chunk.js",
     "static/media/logo.svg": "/tv-shows/static/media/logo.364b022f3b34898f252d291b1f83cf87.svg",
     "index.html": "/tv-shows/index.html",
-    "main.5c22173c.css.map": "/tv-shows/static/css/main.5c22173c.css.map",
-    "main.ae10c5d6.js.map": "/tv-shows/static/js/main.ae10c5d6.js.map",
+    "main.55860d1b.css.map": "/tv-shows/static/css/main.55860d1b.css.map",
+    "main.03570bd5.js.map": "/tv-shows/static/js/main.03570bd5.js.map",
     "787.7a7d084e.chunk.js.map": "/tv-shows/static/js/787.7a7d084e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5c22173c.css",
-    "static/js/main.ae10c5d6.js"
+    "static/css/main.55860d1b.css",
+    "static/js/main.03570bd5.js"
   ]
 }
