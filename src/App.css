@@ -26,7 +26,7 @@ body,
 
 :root .dark {
   --background-colour: #09090a;
-  --hero-background: #101122;
+  --hero-background: #4f3480;
   --icon-header-color: #c997fb;
   --icon-rating-color: #fbec6b;
   --search-background: rgba(255,255,255, .06);
@@ -133,7 +133,7 @@ body,
 
 .hero-inner {
   background: var(--hero-background);
-  padding: var(--space-vertical-medium) 1rem;
+  padding: var(--space-vertical-medium) 0;
 }
 
 .hero-inner__container {

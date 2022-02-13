@@ -7,3 +7,6 @@ A React app that shows today's TV show listings for various countries, allows us
 
 ## Run
 `npm start`
+
+## Deploy
+`npm run deploy`
