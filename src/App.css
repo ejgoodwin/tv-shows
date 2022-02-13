@@ -24,9 +24,9 @@ body,
   --search-background-hover: #f5f6f8;
 }
 
-:root .dark {
+.dark {
   --background-colour: #09090a;
-  --hero-background: #4f3480;
+  --hero-background: #212249;
   --icon-header-color: #c997fb;
   --icon-rating-color: #fbec6b;
   --search-background: rgba(255,255,255, .06);
